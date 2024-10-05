@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Scroll-Triggered Animation</title>
+    <style>
+        /* Define the variable --prime */
+        :root {
+            --prime: #3498db; /* You can customize the color */
+        }
+
+        /* Styling for the box container */
+        .box {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Styling for the animated element */
+        .animation-element {
+            border-radius: 2rem;
+            width: 20rem;
+            height: 30rem;
+            background-color: var(--prime);
+        }
+
+        /* Page section */
+        .page {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Content inside each page section */
+        .content {
+            color: black;
+            width: 30rem;
+            padding: 2rem;
+        }
+
+        h2 {
+            margin: 0 0 2rem 0;
+            padding: 0;
+            max-width: 90%;
+        }
+
+        p {
+            font-size: 1.8rem;
+            max-width: 90%;
+        }
+
+        /* Define the animation */
+        .animation-element {
+            transition: transform 0.1s ease-out; /* Short transition time for quick response */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="animation-element"></div>
+    </div>
+
+    <!-- Repeatable page sections -->
+    <section class="page">
+        <div class="content">
+            <h2></h2>
+            <p>
+                This is some sample text to demonstrate the content.
+            </p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <h2>Sample Heading 2</h2>
+            <p>
+                This is some sample text to demonstrate the content.
+            </p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <h2>Sample Heading 3</h2>
+            <p>
+                This is some sample text to demonstrate the content.
+            </p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <h2>Sample Heading 2</h2>
+            <p>
+                This is some sample text to demonstrate the content.
+            </p>
+        </div>
+    </section>
+
+    <section class="page">
+        <div class="content">
+            <h2>Sample Heading 3</h2>
+            <p>
+                This is some sample text to demonstrate the content.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        let scrollDirection = 1; // Initialize scroll direction (1 = right, -1 = left)
+        let scrollCount = 0; // Initialize scroll count
+        let previousTranslateX = 0; // Store the previous translateX value
+
+        window.addEventListener('scroll', function () {
+            const scrollPosition = window.scrollY; // Get the vertical scroll position
+            const maxScroll = document.body.scrollHeight - window.innerHeight; // Calculate the max scroll value
+            const scrollPercentage = scrollPosition / maxScroll; // Get scroll as a percentage
+
+            // Get the animated element
+            const animationElement = document.querySelector('.animation-element');
+
+            // Increment scroll count
+            scrollCount++;
+
+            // Alternate scroll direction every 2 scrolls
+            if (scrollCount % 3 === 1) {
+                scrollDirection *= -1; // Toggle scroll direction
+            }
+
+            // Set the transform properties based on scroll position
+            const translateX = 740 * (scrollPercentage - 0.5) * scrollDirection; // Move in the current scroll direction
+            const rotation = 600 * scrollPercentage; // Increase rotation multiplier for faster spin
+
+            // Smooth out the transition when direction changes
+            if (Math.abs(translateX - previousTranslateX) > 100) {
+                translateX = previousTranslateX + (translateX - previousTranslateX) * 0.1;
+            }
+
+            // Store the current translateX value
+            previousTranslateX = translateX;
+
+            // Apply the translation and faster rotation to the element
+            animationElement.style.transform = `translate(${translateX}%, 0) rotate(${rotation}deg)`;
+        });
+    </script>
+
+</body>
+</html>

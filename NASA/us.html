@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>About us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./us.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body>
+<section>
+<div class="scrollDist"></div>
+<main>
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <mask id="m">
+      <g class="cloud1">
+        <rect fill="#fff" width="100%" height="801" y="799" />
+        <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
+      </g>
+    </mask>
+    
+    <image class="sky" xlink:href="sky.png"  width="1200" height="590" />   
+    <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800"/>    
+    <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
+    <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
+    <text fill="#fff" x="400" y="200">ABOUT</text>
+    <polyline class="arrow" fill="#fff" points="599,250 599,289 590,279 590,282 600,292 610,282 610,279 601,289 601,250" />
+    
+    <g mask="url(#m)">
+      <rect fill="#fff" width="100%" height="100%" />      
+      <text x="520" y="450" fill="#22446A">US</text>
+    </g>
+    
+    <rect id="arrow-btn" width="100" height="100" opacity="0" x="550" y="220" style="cursor:pointer"/>
+  </svg>
+      <section id="team" class="main-section" data-scroll-section>
+        <h2 class="title-section" data-scroll data-scroll-speed="1">Our Team</h2>
+       
+        <div class="team">
+            <div class="team-member" data-scroll data-scroll-speed="2">
+                <img src="https://via.placeholder.com/150" alt="John Doe">
+                <h3>Salma</h3>
+            </div>
+
+            <div class="team-member" data-scroll data-scroll-speed="3">
+                <img src="https://via.placeholder.com/150" alt="Jane Smith">
+                <h3>Retal</h3>
+                
+            </div>
+
+            <div class="team-member" data-scroll data-scroll-speed="3">
+                <img src="https://via.placeholder.com/150" alt="Michael Lee">
+                <h3>Ghada</h3>
+                
+            </div>
+        </div>
+    </section>
+
+</main>
+  </body>
+  
+<!-- partial -->
+  <script src='https://unpkg.com/gsap@3/dist/gsap.min.js'></script>
+<script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+<script src='https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js'></script><script  src="./us.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,342 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+    --transition: cubic-bezier(.1, .7, 0, 1);
+}
+
+body {
+    background-color: #141414;
+}
+
+
+
+
+
+.image-slider-section {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height */
+    padding: 0 20px; /* Add spacing on the left and right */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 110vh;
+    position: relative;
+    margin: 0 auto; /* Center horizontally */
+}
+
+.items {
+    display: flex;
+    gap: 0.4rem;
+    perspective: calc(var(--index) * 35);
+    transition: transform 0.5s ease;
+    margin: 0 auto; /* Center horizontally */
+}
+
+.item {
+    width: calc(var(--index) * 5);
+    height: calc(var(--index) * 14);
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    filter: grayscale(1) brightness(.5);
+    transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+    will-change: transform, filter, rotateY, width;
+    position: relative;
+}
+
+    .item::before, .item::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 20px;
+        right: calc(var(--index) * -1);
+    }
+
+    .item::after {
+        left: calc(var(--index) * -1);
+    }
+
+.items .item:hover {
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 10));
+}
+
+    /*Right*/
+
+    .items .item:hover + * {
+        filter: inherit;
+        transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
+        z-index: -1;
+    }
+
+        .items .item:hover + * + * {
+            filter: inherit;
+            transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
+            z-index: -2;
+        }
+
+            .items .item:hover + * + * + * {
+                filter: inherit;
+                transform: translateZ(calc(var(--index) * 2.5)) rotateY(30deg);
+                z-index: -3;
+            }
+
+                .items .item:hover + * + * + * + * {
+                    filter: inherit;
+                    transform: translateZ(calc(var(--index) * .6)) rotateY(15deg);
+                    z-index: -4;
+                }
+
+
+/*Left*/
+
+.items .item:has( + :hover) {
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+}
+
+.items .item:has( + * + :hover) {
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+}
+
+.items .item:has( + * + * + :hover) {
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(-30deg);
+}
+
+.items .item:has( + * + * + * + :hover) {
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(-15deg);
+}
+
+.items .item:active, .items .item:focus {
+    width: 28vw;
+    filter: inherit;
+    z-index: 100;
+    transform: translateZ(calc(var(--index) * 10));
+    margin: 0 .45vw;
+}
+
+/* existing styles */
+.description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    font-size: 18px;
+    color: #fff;
+    display: none;
+    position: relative;
+}
+.atmosphere {
+    background-image: url('https://i.pinimg.com/474x/a1/e1/35/a1e135cbc78fe5de525275d153c01e1a.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+.wrapper .description {
+    font-size: 14px; /* adjust the font size to your liking */
+  }
+
+body {
+    background-color: #000;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Full-screen interactive background */
+#interactive-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #42729B;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: move 20s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    100% {
+        transform: translateY(100vh) translateX(100vw);
+    }
+}
+
+
+
+
+
+h2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+    h2 span {
+        position: sticky;
+        top: 0;
+        line-height: 100vh;
+        height: 100vh;
+        color: #fff;
+        font-size: 6em;
+        margin-top: calc(100vh * var(--i));
+    }
+
+
+/* Add animation to the text elements */
+.text {
+    animation: none;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+/* Box and Text Styles */
+.box {
+    width: 400px;
+    height: 200px;
+    background-color: #42729B;
+    margin: 20px auto; /* Center horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+    overflow: hidden;
+}
+
+    .box.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .box img {
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* Ensures the image covers the box */
+    }
+
+.text-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 70px;
+    justify-content: center;
+}
+
+.text {
+    width: 40%;
+    font-size: 24px;
+    color: #fff;
+}
+
+.box-container {
+    display: flex;
+    justify-content: center;
+}
+
+.left-text {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.right-text {
+    text-align: left;
+    margin-left: 20px;
+}
+
+/* Footer and Blur Effect */
+footer {
+    position: relative;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.new-section {
+    position: relative;
+    top: -200px; /* Move the new section up by 40px */
+    margin-bottom: 20px; /* Add some space between new section and next sticky text */
+  }
+  
+  .zone {
+    font-size: 36px; /* Increase font size to 36px */
+    font-weight: bold;
+    animation: slide-from-left 2s; /* Slide from left animation */
+    margin-left: 20px; /* Add 20px margin to the left */
+}
+
+.distance {
+    font-size: 18px; /* Increase font size */
+    color: #666; /* Gray color */
+    margin-left: 20px; /* Add 20px margin to the left */
+}
+  
+  @keyframes slide-from-left {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .sticky-text-container {
+    margin-bottom: 20px; /* Add some space between sticky text containers */
+  }
+
+  
+
+
+

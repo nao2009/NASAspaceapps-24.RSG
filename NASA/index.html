@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="./style.css">
+  <title>home page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Teko:wght@300..700&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  
+</head>
+
+<body>
+
+  <!-- Main page content sections -->
+  <div class="page"></div> <!-- Large scrolling area to trigger animations -->
+
+
+  <!-- Content container that holds the different sections of the page -->
+  <div class="content">
+    <!-- Section 1 -->
+    <div class="content-section">
+      <div>
+        <h1>Planet venra</h1>
+        <h4 class="arrow-animated">🖰</h4> <!-- Floating down arrow for visual hint to scroll -->
+      </div>
+    </div>
+    
+    <!-- Section 2 -->
+    <div class="content-section">
+      <div>
+        <h2>What is planet venra?</h2>
+        <p>Planet Venra is a water-rich ocean planet orbiting a red dwarf star, where life relies on chemosynthesis around deep hydrothermal vents instead of sunlight.</p>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="content-section">
+      <div>
+        <h3>And how does it ecosystem work?</h3>
+        <p>Its ecosystem is driven by volcanic activity, tidal heating, and a thick atmosphere of nitrogen and carbon dioxide. <a href="./bio/us.html" target="_top">Find out more</a></p>
+      </div>
+    </div>
+  </div>
+ 
+  
+  <!-- partial:index.partial.html -->
+  <div class="box"> </div>
+  
+  <div class="ball"></div>
+  <!-- partial -->
+    
+  
+  
+
+
+<script>
+  // Scroll-triggered spinning animation
+  gsap.timeline({
+      scrollTrigger: {
+          trigger: ".page",  // The scrollable area
+          scrub: true,       // Syncs animation with the scroll
+          start: "0% 0%",    // Start animation at the top
+          end: "100% 100%",  // End when the scroll reaches the bottom
+      },
+  })
+  .to(".ball", {
+      rotation: 360,    // Rotate the ball 360 degrees
+      ease: "none",     // No easing for smooth continuous spin
+      duration: 1       // Duration linked to scroll distance
+  });
+</script>
+
+  
+  <!-- Loading external JS libraries (GSAP and plugins) -->
+  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+  <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+  <script src='https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js'></script>
+  <script src="./script.js"></script>
+  
+
+
+</body>
+</html>
